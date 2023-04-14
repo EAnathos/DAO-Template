@@ -21,7 +21,7 @@ export default function Home() {
   // User's balance of CryptoDevs NFTs
   const [nftBalance, setNftBalance] = useState(0);
   // Fake NFT Token ID to purchase. Used when creating a proposal.
-  const [fakenfttokenid, setFakeNftTokenId] = useState("");
+  const [fakeNftTokenId, setFakeNftTokenId] = useState("");
   // One of "Create Proposal" or "View Proposals"
   const [selectedTab, setSelectedTab] = useState("");
   // True if waiting for a transaction to be mined, false otherwise.
@@ -124,7 +124,7 @@ export default function Home() {
     try {
       const signer = await getProviderOrSigner(true);
       const daoContract = getDaoContractInstance(signer);
-      const txn = await daoContract.createProposal(fakenfttokenid);
+      const txn = await daoContract.createProposal(fakeNftTokenId);
       setLoading(true);
       await txn.wait();
       await getNumProposalsInDAO();
